@@ -58,8 +58,6 @@ const Test: FC<TestModel> = ({time, paragraphValue, setWpm, setAccuracy, setSect
     var minutes = Math.floor(timer / 60);
     var seconds = timer - minutes * 60;
 
-    console.log('test ', paragraphArray, valueArray, wordCheck, added)
-
     return (
         <>
             <STYLE.Timer>

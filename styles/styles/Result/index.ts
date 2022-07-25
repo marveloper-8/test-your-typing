@@ -25,6 +25,16 @@ export const Container = styled.div`
     margin: 30px auto;
     @media screen and (max-width: 750px){
         width: 80%;
+        display: block;
+    };
+`;
+
+export const Divider = styled.div`
+    display: none;
+    border-bottom: 1px solid grey;
+    margin-top: 20px;
+    @media screen and (max-width: 750px){
+        display: block;
     };
 `;
 
@@ -42,6 +52,7 @@ export const SetupButton = styled.button`
     margin-top: 60px;
     border: 2px solid grey;
     @media screen and (max-width: 750px){
-        width: 80%;
+        width: 90%;
+        font-size: 15px;
     };
 `;

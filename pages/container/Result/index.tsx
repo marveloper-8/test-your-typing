@@ -15,10 +15,12 @@ const Result: FC<ResultModel> = ({wpm, accuracy, wordCount, setSection}) => {
                         <h1>{wpm}</h1>
                         Words Per Minute
                     </div>
+                    <STYLE.Divider />
                     <div>
                         <h1>{wordCount}</h1>
                         Word Points
                     </div>
+                    <STYLE.Divider />
                     <div>
                         <h1>{accuracy}%</h1>
                         Typing Accuracy
