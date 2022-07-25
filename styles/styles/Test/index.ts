@@ -18,6 +18,7 @@ export const ParagraphContainer = styled.div`
     height: 51%;
     overflow-y: scroll;
     overflow-x: hidden;
+    position: relative;
 `;
 
 export const Paragraph = styled.div`
@@ -39,13 +40,14 @@ export const Text = styled.span<TestModel>`
     `};
 `;
 
-export const ParagraphInput = styled.input`
+export const ParagraphInput = styled.textarea`
     opacity: 0;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 50vh;
+    height: 100%;
+    font-size: 20px;
 `;
 
 export const Keyboard = styled.div`

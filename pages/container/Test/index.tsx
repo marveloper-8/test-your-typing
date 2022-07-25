@@ -81,7 +81,6 @@ const Test: FC<TestModel> = ({time, paragraphValue, setWpm, setAccuracy, setSect
                         ))}
                     </div>
                     <STYLE.ParagraphInput 
-                        type='text' 
                         value={value}
                         onKeyDown={(event: any) => {
                             var name = event.key;
