@@ -17,12 +17,6 @@ const Test: FC<TestModel> = ({time, paragraphValue, setWpm, setAccuracy, setSect
 
     const wpm = Math.round((added.length / 5) / (time / 60))
 
-    const valueAdd = added.map((item: any) => item.value).join('')
-
-    const paragraphArray = value.length > 0 ? paragraphValue.substring(0, value.length).split(' ') : []
-    const valueArray = value.length > 0 ? valueAdd.split(' ') : []
-    const wordCheck = valueArray.length > 0 ? valueArray.map((item: any, index: number) => item === paragraphArray[index]) : []
-
   const [timer, setTimer] = useState(time);
   const id: any = useRef(null);
   const clear=()=>{
@@ -35,23 +29,39 @@ const Test: FC<TestModel> = ({time, paragraphValue, setWpm, setAccuracy, setSect
         return ()=>clear();
     },[])
 
+    const [wordCollection, setWordCollection]: any = useState([])
+    const [word, setWord]: any = useState([])
+    const paragraphWordArray = paragraphValue.split(' ')
+
     useEffect(()=>{
         if(timer===0){
             clear()
             setWpm(wpm)
             setAccuracy(accuracy)
             setSection('result')
-            setWordCount(`${wordCheck.filter((item: any) => item).length} / ${valueArray.length}`)
+            setWordCount(`${wordCollection.filter((item: any) => item.status === "correct").length} / ${wordCollection.length + 1}`)
         }
     },[timer])
 
     useEffect(() => {
         const valueArray = value.split('')
+        const spaceChecker = toType[added.length] === ' '
+
         if(valueArray[valueArray.length - 1] !== undefined){
             added.push({
-                value: toType[added.length] === ' ' ? ' ' : valueArray[valueArray.length - 1],
+                value: spaceChecker ? ' ' : valueArray[valueArray.length - 1],
                 status: valueArray[valueArray.length - 1] === toType[added.length] ? "correct" : "wrong"
             })
+        }
+
+        if(spaceChecker){
+            const wordCopy = [...word]
+            wordCopy.pop()
+            wordCollection.push({
+                value: wordCopy.join(''),
+                status: paragraphWordArray[wordCollection.length] === wordCopy.join('') ? "correct" : "wrong"
+            })
+            setWord([])
         }
     }, [value])
 
@@ -85,9 +95,13 @@ const Test: FC<TestModel> = ({time, paragraphValue, setWpm, setAccuracy, setSect
                         onKeyDown={(event: any) => {
                             var name = event.key;
                             setKey(name)
+                            word.push(name)
                         }}
                         onKeyUp={() => setKey('')}
-                        onChange={(e: any) => setValue(e.target.value)}
+                        onChange={(e: any) => {
+                            setValue(e.target.value)
+                            // setWord(e.target.value)
+                        }}
                     />
                 </STYLE.Paragraph>
             </STYLE.ParagraphContainer>
