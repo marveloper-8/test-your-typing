@@ -98,10 +98,10 @@ const Test: FC<TestModel> = ({time, paragraphValue, setWpm, setAccuracy, setSect
                             word.push(name)
                         }}
                         onKeyUp={() => setKey('')}
-                        onChange={(e: any) => {
-                            setValue(e.target.value)
-                            // setWord(e.target.value)
-                        }}
+                        onChange={(e: any) => setValue(e.target.value)}
+                        data-gramm="false"
+                        data-gramm_editor="false"
+                        data-enable-grammarly="false"
                     />
                 </STYLE.Paragraph>
             </STYLE.ParagraphContainer>
