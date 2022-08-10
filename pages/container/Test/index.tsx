@@ -31,7 +31,7 @@ const Test: FC<TestModel> = ({time, paragraphValue, setWpm, setAccuracy, setSect
 
     const [wordCollection, setWordCollection]: any = useState([])
     const [word, setWord]: any = useState([])
-    const paragraphWordArray = paragraphValue.split(' ')
+    const paragraphWordArray = paragraphValue ? paragraphValue.split(' ') : []
 
     useEffect(()=>{
         if(timer===0){
