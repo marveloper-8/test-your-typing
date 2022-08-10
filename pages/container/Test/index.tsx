@@ -41,6 +41,7 @@ const Test: FC<TestModel> = ({time, paragraphValue, setWpm, setAccuracy, setSect
             setSection('result')
             setWordCount(`${wordCollection.filter((item: any) => item.status === "correct").length} / ${wordCollection.length + 1}`)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[timer])
 
     useEffect(() => {
@@ -63,6 +64,7 @@ const Test: FC<TestModel> = ({time, paragraphValue, setWpm, setAccuracy, setSect
             })
             setWord([])
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value])
 
     var minutes = Math.floor(timer / 60);
